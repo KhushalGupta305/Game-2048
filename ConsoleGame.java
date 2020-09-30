@@ -119,12 +119,9 @@ public class ConsoleGame {
         
         try {
             InputStreamReader unbuffered = new InputStreamReader(System.in, "UTF8");
-            char inputChar;
-            
-            ActionStatus result=ActionStatus.CONTINUE;
-            while(result==ActionStatus.CONTINUE || result==ActionStatus.INVALID_MOVE) {
-                inputChar = (char)unbuffered.read();
-                //inputChar = 'a';
+            ActionStatus result = ActionStatus.CONTINUE;
+            while(result == ActionStatus.CONTINUE || result == ActionStatus.INVALID_MOVE) {
+                char inputChar = (char)unbuffered.read();
                 if(inputChar=='\n' || inputChar=='\r') {
                     continue;
                 }
@@ -177,7 +174,7 @@ public class ConsoleGame {
      * @param score 
      * @param hint 
      */
-    public static void printBoard(int[][] boardArray, int score, Direction hint) {
+    private static void printBoard(int[][] boardArray, int score, Direction hint) {
         System.out.println("-------------------------");
         System.out.println("Score:\t" + String.valueOf(score));
         System.out.println();
