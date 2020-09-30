@@ -184,9 +184,9 @@ public class ConsoleGame {
         System.out.println("Hint:\t" + hint);
         System.out.println();
         
-        for(int i=0;i<boardArray.length;++i) {
-            for(int j=0;j<boardArray[i].length;++j) {
-                System.out.print(boardArray[i][j] + "\t");
+        forEach(boards : boardArray) {
+            forEach(board : boards) {
+                System.out.print(board + "\t");
             }
             System.out.println();
         }
