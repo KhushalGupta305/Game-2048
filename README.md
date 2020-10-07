@@ -12,10 +12,6 @@ http://blog.datumbox.com/using-artificial-intelligence-to-solve-the-2048-game-ja
 Useful Links
 ============
 
-Datumbox: https://www.datumbox.com/
-
 Machine Learning Blog: https://blog.datumbox.com/
 
 Game 2048 by Gabriele Cirulli: http://gabrielecirulli.github.io/2048/
-
-2048 AI by Matt Overlan: http://ov3y.github.io/2048-AI/
