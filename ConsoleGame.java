@@ -26,10 +26,9 @@ public class ConsoleGame {
         System.out.println();
         while(true) {
             printMenu();
-            int choice;
             try {
                 Scanner sc = new Scanner (System.in);     
-                choice = sc.nextInt();
+                int choice = sc.nextInt();
                 switch (choice) {
                     case 1:  playGame();
                              break;
@@ -42,7 +41,7 @@ public class ConsoleGame {
                 }
             }
             catch(Exception e) {
-                System.out.println("Wrong choice");
+                System.out.println("Wrong choice" + e.getMessage());
             }
         }
     }
@@ -50,14 +49,14 @@ public class ConsoleGame {
     /**
      * Prints Help menu
      */
-    public static void help() {
+    private static void help() {
         System.out.println("Seriously?!?!?");
     }
     
     /**
      * Prints main menu
      */
-    public static void printMenu() {
+    private static void printMenu() {
         System.out.println();
         System.out.println("Choices:");
         System.out.println("1. Play the 2048 Game");
@@ -73,7 +72,7 @@ public class ConsoleGame {
      * 
      * @throws CloneNotSupportedException 
      */
-    public static void calculateAccuracy() throws CloneNotSupportedException {
+    private static void calculateAccuracy() throws CloneNotSupportedException {
         int wins=0;
         int total=10;
         System.out.println("Running "+total+" games to estimate the accuracy:");
@@ -108,7 +107,7 @@ public class ConsoleGame {
      * 
      * @throws CloneNotSupportedException 
      */
-    public static void playGame() throws CloneNotSupportedException {
+    private static void playGame() throws CloneNotSupportedException {
         System.out.println("Play the 2048 Game!"); 
         System.out.println("Use 8 for UP, 6 for RIGHT, 2 for DOWN and 4 for LEFT. Type a to play automatically and q to exit. Press enter to submit your choice.");
         
