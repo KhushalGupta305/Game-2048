@@ -12,6 +12,10 @@ import java.util.Scanner;
  * The main class of the Game.
  */
 public class ConsoleGame {
+    
+    private static final int WINS = 0;
+    private static final int TOTAL = 10;
+    private static final int HINT_DEPTH = 7;
 
     /**
      * Main function of the game.
@@ -73,25 +77,22 @@ public class ConsoleGame {
      * @throws CloneNotSupportedException 
      */
     private static void calculateAccuracy() throws CloneNotSupportedException {
-        int wins=0;
-        int total=10;
-        System.out.println("Running "+total+" games to estimate the accuracy:");
+        System.out.println("Running "+TOTAL+" games to estimate the accuracy:");
         
-        for(int i=0;i<total;++i) {
-            int hintDepth = 7;
+        for(int i=0;i<TOTAL;++i) {
             Board theGame = new Board();
-            Direction hint = AIsolver.findBestMove(theGame, hintDepth);
+            Direction hint = AIsolver.findBestMove(theGame, HINT_DEPTH);
             ActionStatus result=ActionStatus.CONTINUE;
             while(result==ActionStatus.CONTINUE || result==ActionStatus.INVALID_MOVE) {
                 result=theGame.action(hint);
 
                 if(result==ActionStatus.CONTINUE || result==ActionStatus.INVALID_MOVE ) {
-                    hint = AIsolver.findBestMove(theGame, hintDepth);
+                    hint = AIsolver.findBestMove(theGame, HINT_DEPTH);
                 }
             }
 
             if(result == ActionStatus.WIN) {
-                ++wins;
+                ++WINS;
                 System.out.println("Game "+(i+1)+" - won");
             }
             else {
@@ -99,7 +100,7 @@ public class ConsoleGame {
             }
         }
         
-        System.out.println(wins+" wins out of "+total+" games.");
+        System.out.println(WINS+" wins out of "+TOTAL+" games.");
     }
     
     /**
@@ -111,9 +112,8 @@ public class ConsoleGame {
         System.out.println("Play the 2048 Game!"); 
         System.out.println("Use 8 for UP, 6 for RIGHT, 2 for DOWN and 4 for LEFT. Type a to play automatically and q to exit. Press enter to submit your choice.");
         
-        int hintDepth = 7;
         Board theGame = new Board();
-        Direction hint = AIsolver.findBestMove(theGame, hintDepth);
+        Direction hint = AIsolver.findBestMove(theGame, HINT_DEPTH);
         printBoard(theGame.getBoardArray(), theGame.getScore(), hint);
         
         try {
@@ -149,7 +149,7 @@ public class ConsoleGame {
                 }
                 
                 if(result==ActionStatus.CONTINUE || result==ActionStatus.INVALID_MOVE ) {
-                    hint = AIsolver.findBestMove(theGame, hintDepth);
+                    hint = AIsolver.findBestMove(theGame, HINT_DEPTH);
                 }
                 else {
                     hint = null;
